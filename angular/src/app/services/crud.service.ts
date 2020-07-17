@@ -23,7 +23,7 @@ export class CrudService {
       returndata =data.data;
       this.permisos.decodificarToken(data.token);
     }else{
-      const Toast = Swal.fire({
+       Swal.fire({
         position: 'top-right',
         icon:'error',
         title:`${data.msg}`,
