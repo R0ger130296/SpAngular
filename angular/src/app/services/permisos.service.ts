@@ -24,7 +24,7 @@ decodificarToken(token: string): boolean {
     this.usuarioLogin = decoded.data || null;
     this.sessionID = this.usuarioLogin.sessionID || null;
     this.rol= this.usuarioLogin.rol
-    console.log(this.rol)
+    console.log(this.token)
     delete this.usuarioLogin.sessionID;
     delete this.usuarioLogin.passw;
     return true;
@@ -33,7 +33,7 @@ decodificarToken(token: string): boolean {
   }
 }
 public isAuthenticated(): boolean {
-    return !this.token;
+    return this.token ===null;
     console.log(this.token)
   }
 obtenerToken(): string {
