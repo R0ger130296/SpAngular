@@ -4,9 +4,10 @@ import { MenuComponent } from './menu.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { RegisterUsersComponent } from './register-users/register-users.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { AuthGuardService } from '../guard/auth-guard.service';
 const routes: Routes = [
-  { path: '', component: MenuComponent },
-  {path: 'usuarios', component:UsuariosComponent},
+  {path: '', component: MenuComponent },
+  {path: 'usuarios', component:UsuariosComponent,canActivate: [AuthGuardService]},
   {path: 'register-users', component:RegisterUsersComponent},
   {path: 'edit-users', component:EditUserComponent},
 ];

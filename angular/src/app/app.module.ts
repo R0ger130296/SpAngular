@@ -9,12 +9,14 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { AuthGuardService } from './guard/auth-guard.service'
+//import { AuthGuardService } from './guard/auth-guard.service'
+import { ErrorComponent } from './error/error.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,9 +27,9 @@ import { AuthGuardService } from './guard/auth-guard.service'
     SocketIoModule,
     RouterModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ],
-    providers: [AuthGuardService], 
-  bootstrap: [AppComponent]
+//    providers: [AuthGuardService],
+     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Datarx } from '../models/datarx';
 import { Usuario } from '../models/usuario';
 import * as  jwt_decode from 'jwt-decode';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +12,7 @@ private token: string;
 private usuarioLogin:Usuario;
 private sessionID:string;
 private rol : string;
+public jwtHelper: JwtHelperService
   constructor() {
     this.token=null;
     this.usuarioLogin;
@@ -22,7 +23,7 @@ decodificarToken(token: string): boolean {
     this.token = token || null;
     this.usuarioLogin = decoded.data || null;
     this.sessionID = this.usuarioLogin.sessionID || null;
-    this.rol= JSON.stringify(Object(this.usuarioLogin).rol)
+    this.rol= this.usuarioLogin.rol
     console.log(this.rol)
     delete this.usuarioLogin.sessionID;
     delete this.usuarioLogin.passw;
@@ -31,7 +32,10 @@ decodificarToken(token: string): boolean {
     return false;
   }
 }
-
+public isAuthenticated(): boolean {
+    return !this.token;
+    console.log(this.token)
+  }
 obtenerToken(): string {
   return this.token;
 }
@@ -44,8 +48,8 @@ getUserLogin(): object {
   return this.usuarioLogin;
 }
 
-getUserRol(): string {
-  return this.rol;
+getUserRol(): boolean {
+  return this.rol != "Administrador";
 }
 
 obtenerSession(): string {
