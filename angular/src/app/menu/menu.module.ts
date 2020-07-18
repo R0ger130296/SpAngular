@@ -8,7 +8,6 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { NgxSpinnerModule } from "ngx-spinner";
-
 // Import library module
 @NgModule({
   declarations: [MenuComponent, UsuariosComponent, RegisterUsersComponent, EditUserComponent ],
@@ -19,6 +18,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule
-  ]
+  ],
+  
 })
 export class MenuModule { }

@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { AuthGuardService } from './guard/auth-guard.service'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     BrowserAnimationsModule,
     NgxSpinnerModule
   ],
-  providers: [],
+    providers: [AuthGuardService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

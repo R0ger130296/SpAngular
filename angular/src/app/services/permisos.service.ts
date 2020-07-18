@@ -11,6 +11,7 @@ datarx:Datarx;
 private token: string;
 private usuarioLogin:Usuario;
 private sessionID:string;
+private rol : string;
   constructor() {
     this.token=null;
     this.usuarioLogin;
@@ -21,6 +22,8 @@ decodificarToken(token: string): boolean {
     this.token = token || null;
     this.usuarioLogin = decoded.data || null;
     this.sessionID = this.usuarioLogin.sessionID || null;
+    this.rol= JSON.stringify(Object(this.usuarioLogin).rol)
+    console.log(this.rol)
     delete this.usuarioLogin.sessionID;
     delete this.usuarioLogin.passw;
     return true;
@@ -39,6 +42,10 @@ destruirToken(): void {
 
 getUserLogin(): object {
   return this.usuarioLogin;
+}
+
+getUserRol(): string {
+  return this.rol;
 }
 
 obtenerSession(): string {

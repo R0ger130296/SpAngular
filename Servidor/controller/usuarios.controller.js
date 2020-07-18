@@ -74,7 +74,7 @@ let updateOne = (req, res) => {
             res.status(200).json({
               msg: "ready",
               data: data,
-              transaccion: false,
+              transaccion: true,
               token: req.token,
             });
         })
