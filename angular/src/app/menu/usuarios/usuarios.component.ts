@@ -36,7 +36,7 @@ export class UsuariosComponent implements OnInit {
     }
 
     ngOnInit(): void {
-     this.getUsers()
+     this.getUsers();
     }
     getUsers(): void {
       this.http

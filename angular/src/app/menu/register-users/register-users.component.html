@@ -63,8 +63,6 @@
         </label>
         <input formControlName='apellido' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4  focus:outline-none focus:bg-white focus:border-gray-500"  type="text" placeholder="Cedeño">
       </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
           Email
@@ -77,8 +75,6 @@
         </label>
         <input formControlName='edad' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4  focus:outline-none focus:bg-white focus:border-gray-500"  type="number" placeholder="24">
       </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-2">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
           Password
@@ -91,32 +87,32 @@
         </label>
         <input formControlName='verifypassw' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4  focus:outline-none focus:bg-white focus:border-gray-500"  type="password" placeholder="Confirm Password">
       </div>
-    <!--  <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-          File
-        </label>
-        <input class="px-7 py-3"  type="file">
-          <img src="https://images.unsplash.com/photo-1581247227572-360cf3d83e00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-               class="t-1 rounded-full h-32 w-32 "
-               alt=""/>
-      </div> -->
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-          Rol
-        </label>
-        <div class="relative">
-          <select formControlName='rol' class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded  focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-            <option></option>
-            <option>Estudiante</option>
-            <option>Administrador</option>
-          </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button (click)="createUser()" type="submit"class="bg-pink-400  text-white font-bold py-2 px-10 rounded-full" name="button">Guardar</button>
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+        File
+      </label>
+      <input formControlName='file' (change)="changeFile($event)" name="file" class="px-5 py-3"  type="file">
+        <img src="{{verFile}}"
+             class="t-1 rounded-full h-32 w-32 "
+             alt=""/>
+             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+               <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                 Rol
+               </label>
+               <div class="relative">
+                 <select formControlName='rol' class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded  focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                   <option></option>
+                   <option>Estudiante</option>
+                   <option>Administrador</option>
+                 </select>
+                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                   <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+               </div>
+             </div>
+           </div>
+           <div class="flex-wrap mx-3 mb-2">
+               <button (click)="createUser()" type="submit"class="bg-pink-400  text-white font-bold py-2 px-5 rounded-full" name="button">Guardar</button>
+           </div>
+           </div>
   </form>
       </div>
       </h1>

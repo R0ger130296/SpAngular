@@ -7,6 +7,7 @@ import { PermisosService } from '../../services/permisos.service';
 import { Datarx } from '../../models/datarx';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FileService } from '../../services/files.service';
 
 @Component({
   selector: 'app-register-users',
@@ -16,6 +17,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class RegisterUsersComponent implements OnInit {
  createuserForm: FormGroup;
  navigationSubcription;
+ verFile: any;
   constructor(
    private formBuilder: FormBuilder,
    private http: HttpClient,
@@ -23,6 +25,7 @@ export class RegisterUsersComponent implements OnInit {
    private cudService: CrudService,
    private permisosService: PermisosService,
    private spinner: NgxSpinnerService,
+    private fileService: FileService,
   ) {this.navigationSubcription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
         this.spinner.show();
@@ -32,7 +35,22 @@ export class RegisterUsersComponent implements OnInit {
       }
     });
    }
-
+   changeFile(event): void {
+     let imagen = this.createuserForm.get('file').value;
+     if (imagen !== 'M3RSqMLHQB4ZBqpz9rpwrY7q.png') {
+       this.fileService.deleteFile('galeria', imagen);
+     }
+     const filename = event.target.files;
+     console.log(filename)
+     this.fileService.guardarFile(filename).subscribe((data:Datarx)=>{
+       console.log(data)
+       if(data.transaccion){
+         imagen = data.data[0];
+         console.log(imagen)
+         this.verFile=this.fileService.obtenerFile('galeria',imagen)
+       }
+     })
+   }
   ngOnInit(): void {
     this.createuserForm = this.formBuilder.group({
     nombre: ['', [Validators.required]],
@@ -42,8 +60,12 @@ export class RegisterUsersComponent implements OnInit {
      email: ['', [Validators.required]],
      passw: ['', [Validators.required]],
      verifypassw: ['', [Validators.required]],
-    // file: ['', [Validators.required]],
+     file: ['', [Validators.required]],
    });
+   this.verFile = this.fileService.obtenerFile(
+     'galeria',
+     'M3RSqMLHQB4ZBqpz9rpwrY7q.png'
+   );
   }
   createUser(){
   let nombre = this.createuserForm.get('nombre').value;
