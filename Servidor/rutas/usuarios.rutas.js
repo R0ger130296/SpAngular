@@ -10,11 +10,11 @@ let api = express.Router(),
     galeriaMiddLeware = multiParty({ uploadDir: './files/galeria' }),
     rolControl = require('../auth/rol')
 
-api.get('/usuarios', autenticacioncontrol.autentificar, usuarioControl.getUsuario)
+api.get('/usuarios', usuarioControl.getUsuario)
 
 api.post('/insert_usuario', usuarioControl.insertOne)
 api.post('/insert_usuario_many', autenticacioncontrol.autentificar, usuarioControl.insertMany)
-api.put('/update/:id', autenticacioncontrol.autentificar, usuarioControl.updateOne)
+api.put('/update/:id',  usuarioControl.updateOne)
 api.get('/usuario/:id', autenticacioncontrol.autentificar, usuarioControl.get_usuario_one)
 api.delete('/usuarios_delete', autenticacioncontrol.autentificar, usuarioControl.deleteMany)
 api.delete('/usuario_delete/:id', autenticacioncontrol.autentificar, usuarioControl.deleteOne)

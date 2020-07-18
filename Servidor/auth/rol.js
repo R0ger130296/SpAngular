@@ -11,7 +11,7 @@ let admin = (req, res, next) => {
             });
         } else {
             switch (decode.data.rol) {
-                case "administrador":
+                case "Administrador":
                     console.log("Bienvenido administrator. ):");
                     next();
                     break;
@@ -37,7 +37,7 @@ let client = (req, res, next) => {
             });
         } else {
             switch (decode.data.rol) {
-                case "estuadiante":
+                case "Estuadiante":
                     console.log("Bienvenido Estudiante.");
                     next();
                     break;

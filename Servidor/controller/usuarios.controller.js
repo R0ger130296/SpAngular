@@ -67,20 +67,20 @@ let insertMany = (req, res) => {
 //Actualizar uno
 let updateOne = (req, res) => {
     let _id = req.params.id,
-        data = req.body.data;
-
-    usuarios_model.updateOne({ '_id': _id }, { $set: data })
-        .then((data) => {
+        {data} = req.body;
+        console.log(data)
+    usuarios_model.updateOne({ _id: _id }, { $set: data })
+        .then(data => {
             res.status(200).json({
-              msg: 'ready',
+              msg: "ready",
               data: data,
-              transaccion: true,
-              token: req.token
+              transaccion: false,
+              token: req.token,
             });
         })
-        .catch((err) => {
+        .catch(e => {
             res.status(500).json({
-              msg: 'ready',
+              msg: `${e}`,
               data: null,
               transaccion: false
             });
@@ -100,7 +100,7 @@ let get_usuario_one = (req, res) => {
             console.log(data)
         }).catch(e => {
             res.status(500).json({
-              msg: 'ready',
+              msg: `${e}`,
               data: null,
               transaccion: false
             })
@@ -118,7 +118,7 @@ let deleteMany = (req, res) => {
             })
         }).catch(e => {
             res.status(500).json({
-              msg: 'ready',
+              msg: `${e}`,
               data: null,
               transaccion: false
             })
@@ -137,11 +137,11 @@ let deleteOne = (req, res) => {
                 })
             }).catch(e => {
                 res.status(500).json({
-                  msg: 'ready',
+                    msg: `${e}`,
                   data: null,
                   transaccion: false
                 })
-            })
+        })
     }
     //---------------------------------------------------------------------------------------
 
@@ -157,8 +157,8 @@ let nuevoUsuario = (req, res) => {
             })
         }).catch(e => {
             res.status(500).json({
-              msg: 'ready',
-              data: data,
+              msg: `${e}`,
+              data: null,
               transaccion: false
             })
         })
@@ -182,7 +182,7 @@ let login = (req, res) => {
                         sessionID: data[0].sessionID,
                     };
                 bcrypt.compareSync(password, data[0].passw) ?
-                    ((token = jwt.sign({ data: tokenBody }, process.env.KEY_JWT, {
+                    ((token = jwt.sign({ data: tokenBody }, process.env.KEY_JWT,{
                             algorithm: "HS256",
                             expiresIn: 60000,
                         })),
