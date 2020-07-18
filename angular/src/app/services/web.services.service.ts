@@ -19,13 +19,20 @@ export class WebServiceService {
   getHeaders(): object {
     const optionsHeaders = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Type': 'application/json',
         Authorization: this.permissions.obtenerToken(),
       }),
     };
     return optionsHeaders;
   }
-
+  getHeaders1(): object {
+    const optionsHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    return optionsHeaders;
+  }
   getHeaderFile(): object {
     const optionsHeaders = {
       headers: new HttpHeaders({

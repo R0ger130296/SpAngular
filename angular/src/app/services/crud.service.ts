@@ -51,15 +51,14 @@ export class CrudService {
       });
     return returnData;
   }
-  update(endPoint: string, _id: string,Data: object): Array<any> {
+  update(endPoint: string, _id:string, data: object): Array<any> {
     let returnData: Array<any> = [];
     this.http.put<Datarx>(
-        `${this.url}${endPoint}/${_id}`,Data,this.servidor.getHeaders()
-      )
-      .subscribe((data) => {
+        `${this.url}${endPoint}/${_id}`,data,this.servidor.getHeaders1()
+      ).subscribe(data => {
+        console.log(data)
         if (data.transaccion) {
           returnData = data.data;
-          this.permisos.decodificarToken(data.token);
         } else {
         }
       });
