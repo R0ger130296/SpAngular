@@ -184,7 +184,7 @@ let login = (req, res) => {
                 bcrypt.compareSync(password, data[0].passw) ?
                     ((token = jwt.sign({ data: tokenBody }, process.env.KEY_JWT,{
                             algorithm: "HS256",
-                            expiresIn: 60000,
+                            expiresIn: 01,
                         })),
                         res.status(200).json({
                           msg: 'ready',
