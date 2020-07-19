@@ -97,7 +97,7 @@ export class RegisterUsersComponent implements OnInit {
         };
         let user = this.cudService.insert('insert', datos);
         if (user) {
-            this.router.navigate(['/login']).then
+            this.router.navigate(['/menu/usuarios']).then
             this.permisosService.destruirToken();
         }
       }

@@ -110,7 +110,7 @@
              </div>
            </div>
            <div class="flex-wrap mx-3 mb-2">
-               <button (click)="createUser()" type="submit"class="bg-pink-400  text-white font-bold py-2 px-5 rounded-full" name="button">Guardar</button>
+               <button (keypress)="createUser()" (click)="createUser()" [disabled]="createuserForm.invalid" (click)="createUser()" type="submit"class="bg-pink-400  text-white font-bold py-2 px-5 rounded-full" name="button">Guardar</button>
            </div>
            </div>
   </form>

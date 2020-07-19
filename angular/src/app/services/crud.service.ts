@@ -40,7 +40,7 @@ export class CrudService {
   delete(endPoint: string, _id: string): Array<any> {
     let returnData: Array<any> = [];
     this.http
-      .delete<Datarx>(`${this.url}${endPoint}/${_id}`, this.servidor.getHeaders())
+      .delete<Datarx>(`${this.url}${endPoint}/${_id}`, this.servidor.getHeaders1())
       .subscribe((data) => {
         if (data.transaccion) {
           returnData = data.data;

@@ -53,12 +53,16 @@ export class UsuariosComponent implements OnInit {
       this.permisosService.destruirToken();
      }
 
-     deletUuser(_id) {
+     delet_user(_id) {
+       console.log(_id)
        this.crudService.delete('usuario_delete', _id);
-      this.spinner.show();
-      setTimeout(() => {
-        this.spinner.hide();
-      }, 800);
-
+         this.navigationSubcription = this.router.events.subscribe((e: any) => {
+             if (e instanceof NavigationEnd) {
+               this.spinner.show();
+               setTimeout(() => {
+                 this.spinner.hide();
+               }, 800);
+             }
+           });
    }
 }

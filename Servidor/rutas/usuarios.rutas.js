@@ -17,7 +17,7 @@ api.post('/insert_usuario_many', autenticacioncontrol.autentificar, usuarioContr
 api.put('/update/:id',  usuarioControl.updateOne)
 api.get('/usuario/:id', autenticacioncontrol.autentificar, usuarioControl.get_usuario_one)
 api.delete('/usuarios_delete', autenticacioncontrol.autentificar, usuarioControl.deleteMany)
-api.delete('/usuario_delete/:id', autenticacioncontrol.autentificar, usuarioControl.deleteOne)
+api.delete('/usuario_delete/:id', usuarioControl.deleteOne)
 
 api.post('/insert', [passwordcontrol.codificar], usuarioControl.nuevoUsuario)
 api.post('/login', usuarioControl.login)
