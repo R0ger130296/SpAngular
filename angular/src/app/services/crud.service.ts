@@ -40,7 +40,7 @@ export class CrudService {
   delete(endPoint: string, _id: string): Array<any> {
     let returnData: Array<any> = [];
     this.http
-      .delete<Datarx>(`${this.url}${endPoint}/${_id}`, this.servidor.getHeaders1())
+      .delete<Datarx>(`${this.url}${endPoint}/${_id}`, this.servidor.getHeaders())
       .subscribe((data) => {
         if (data.transaccion) {
           returnData = data.data;
@@ -54,7 +54,7 @@ export class CrudService {
   update(endPoint: string, _id:string, data: object): Array<any> {
     let returnData: Array<any> = [];
     this.http.put<Datarx>(
-        `${this.url}${endPoint}/${_id}`,data,this.servidor.getHeaders1()
+        `${this.url}${endPoint}/${_id}`,data,this.servidor.getHeaders()
       ).subscribe(data => {
         console.log(data)
         if (data.transaccion) {

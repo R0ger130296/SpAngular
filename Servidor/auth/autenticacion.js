@@ -13,7 +13,7 @@
               req.decode = decode;
               let token = jwt.sign({ data: decode.data }, process.env.KEY_JWT, {
                   algorithm: "HS256",
-                  expiresIn: 01,
+                  expiresIn: 600,
               });
 
               req.token = token;

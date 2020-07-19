@@ -49,8 +49,7 @@ export class UsuariosComponent implements OnInit {
     }
     public edit(user): void {
        sessionStorage.setItem('user', JSON.stringify(user));
-       this.router.navigate(['/menu/edit-users']).then
-      this.permisosService.destruirToken();
+       this.router.navigate(['/menu/edit-users']);
      }
 
      delet_user(_id) {
